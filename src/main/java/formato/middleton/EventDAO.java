@@ -6,17 +6,13 @@ import java.util.List;
 
 public class EventDAO extends AbstractDAO<Event> {
     @Override
-    public void create(Event entity) throws SQLException {
+    public void create(String eventName, String prizePool) throws SQLException {
         String sql="INSERT INTO event(event_name,prize_pool) VALUES(?,?)";
         Connection con = getConnection();
         PreparedStatement pst = con.prepareStatement(sql,PreparedStatement.RETURN_GENERATED_KEYS);
-        pst.setString(1, entity.getName());
-        pst.setString(2, entity.getPrizePool());
+        pst.setString(1, eventName);
+        pst.setString(2, prizePool);
         pst.executeUpdate();
-        ResultSet rs = pst.getGeneratedKeys();
-        if(rs.next()){
-            entity.setId(rs.getInt(1));
-        }
         con.close();
     }
 
