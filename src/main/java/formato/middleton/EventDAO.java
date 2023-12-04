@@ -20,6 +20,7 @@ public class EventDAO extends AbstractDAO<Event> {
         con.close();
     }
 
+    @Override
     public Event read(int id) throws SQLException {
         String sql = "SELECT * FROM client WHERE event_id = ?";
         Connection con = getConnection();
@@ -37,6 +38,7 @@ public class EventDAO extends AbstractDAO<Event> {
         return c;
     }
 
+    @Override
     public void update(Event entity) throws SQLException {
         String sql = "UPDATE event SET event_name = ?, prize_pool = ? WHERE event_id = ?";
         Connection con  = getConnection();
@@ -47,6 +49,7 @@ public class EventDAO extends AbstractDAO<Event> {
         con.close();
     }
 
+    @Override
     public void delete(Event entity) throws SQLException {
         String sql = "DELETE FROM event WHERE event_id = ?";
         Connection con = getConnection();
@@ -56,6 +59,7 @@ public class EventDAO extends AbstractDAO<Event> {
         con.close();
     }
 
+    @Override
     public List<Event> list() throws SQLException {
         ArrayList<Event> lstEvent = new ArrayList<>();
         Connection con = getConnection();
@@ -66,6 +70,7 @@ public class EventDAO extends AbstractDAO<Event> {
             Event c = new Event();
             c.setId( rs.getInt("event_id") );
             c.setName( rs.getString("event_name"));
+            c.setPrizePool(rs.getInt("prize_pool"));
             lstEvent.add(c);
         }
         con.close();
