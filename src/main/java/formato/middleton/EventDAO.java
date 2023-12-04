@@ -31,13 +31,20 @@ public class EventDAO extends AbstractDAO<Event> {
             c = new Event();
             c.setId( rs.getInt("event_id") );
             c.setName( rs.getString("event_name") );
+            c.setPrizePool(rs.getInt("prize_pool"));
         }
         con.close();
         return c;
     }
 
     public void update(Event entity) throws SQLException {
-
+        String sql = "UPDATE event SET event_name = ?, prize_pool = ? WHERE event_id = ?";
+        Connection con  = getConnection();
+        PreparedStatement pst = con.prepareStatement(sql);
+        pst.setString(1, entity.getName());
+        pst.setInt(2, entity.getPrizePool());
+        pst.executeUpdate();
+        con.close();
     }
 
     public void delete(Event entity) throws SQLException {
