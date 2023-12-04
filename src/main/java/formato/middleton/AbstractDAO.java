@@ -25,5 +25,4 @@ public abstract class AbstractDAO<E extends AbstractEntity> {
     public abstract E read(int id) throws SQLException;
     public abstract void update(int id, String eventName, String prizePool) throws SQLException;
     public abstract void delete(int id) throws SQLException;
-    public abstract List<E> list() throws SQLException;
 }

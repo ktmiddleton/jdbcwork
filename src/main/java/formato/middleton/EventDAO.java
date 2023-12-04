@@ -18,7 +18,7 @@ public class EventDAO extends AbstractDAO<Event> {
 
     @Override
     public Event read(int id) throws SQLException {
-        String sql = "SELECT * FROM client WHERE event_id = ?";
+        String sql = "SELECT * FROM event WHERE event_id = ?";
         Connection con = getConnection();
         PreparedStatement pst = con.prepareStatement(sql);
         pst.setInt(1, id);
@@ -54,23 +54,5 @@ public class EventDAO extends AbstractDAO<Event> {
         pst.setInt(1, id);
         pst.executeUpdate();
         con.close();
-    }
-
-    @Override
-    public List<Event> list() throws SQLException {
-        ArrayList<Event> lstEvent = new ArrayList<>();
-        Connection con = getConnection();
-        String sql = "SELECT * FROM event ORDER BY event_name";
-        PreparedStatement pst = con.prepareStatement(sql);
-        ResultSet rs = pst.executeQuery();
-        while(rs.next()){
-            Event c = new Event();
-            c.setId( rs.getInt("event_id") );
-            c.setName( rs.getString("event_name"));
-            c.setPrizePool(rs.getString("prize_pool"));
-            lstEvent.add(c);
-        }
-        con.close();
-        return lstEvent;
     }
 }
