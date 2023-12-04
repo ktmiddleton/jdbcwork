@@ -23,6 +23,6 @@ public abstract class AbstractDAO<E extends AbstractEntity> {
 
     public abstract void create(E entity) throws SQLException;
     public abstract E read(String eventName) throws SQLException;
-    public abstract void update(E entity) throws SQLException;
-    public abstract void delete(E entity) throws SQLException;
+    public abstract void update(int id, String eventName, String prizePool) throws SQLException;
+    public abstract void delete(int id) throws SQLException;
 }

@@ -39,22 +39,23 @@ public class EventDAO extends AbstractDAO<Event> {
     }
 
     @Override
-    public void update(Event entity) throws SQLException {
+    public void update(int id, String eventName, String prizePool) throws SQLException {
         String sql = "UPDATE event SET event_name = ?, prize_pool = ? WHERE event_id = ?";
         Connection con  = getConnection();
         PreparedStatement pst = con.prepareStatement(sql);
-        pst.setString(1, entity.getName());
-        pst.setString(2, entity.getPrizePool());
+        pst.setString(1, eventName);
+        pst.setString(2, prizePool);
+        pst.setInt(3, id);
         pst.executeUpdate();
         con.close();
     }
 
     @Override
-    public void delete(Event entity) throws SQLException {
+    public void delete(int id) throws SQLException {
         String sql = "DELETE FROM event WHERE event_id = ?";
         Connection con = getConnection();
         PreparedStatement pst = con.prepareStatement(sql);
-        pst.setInt(1, entity.getId());
+        pst.setInt(1, id);
         pst.executeUpdate();
         con.close();
     }
