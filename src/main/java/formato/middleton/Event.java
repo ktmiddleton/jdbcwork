@@ -1,6 +1,6 @@
 package formato.middleton;
 
-public class Event {
+public class Event extends AbstractEntity {
     private int id;
     private String name;
     private int prizePool;
