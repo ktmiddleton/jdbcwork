@@ -14,10 +14,10 @@ public class ClientService {
         dao.create(e);
     }
 
-    public List<Event> read(String event_name) throws Exception
+    public Event read(int id) throws Exception
     {
         EventDAO dao = new EventDAO();
-        return dao.read(event_name);
+        return dao.read(id);
     }
 
     public void update(String event_name, String prize_pool, String id) throws Exception
