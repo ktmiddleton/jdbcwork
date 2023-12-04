@@ -8,7 +8,7 @@ public abstract class AbstractDAO<E extends AbstractEntity> {
     protected String Port = "3306";
     protected String Database = "project_db";
     protected String Username = "root";
-    protected String Password = "mypassword";
+    protected String Password = "pjhenrymabel403";
 
     public Connection getConnection() throws SQLException{
         String url = ConUrl+":"+Port+"/"+Database+"?user="+Username
@@ -22,7 +22,8 @@ public abstract class AbstractDAO<E extends AbstractEntity> {
     }
 
     public abstract void create(String eventName, String prizePool) throws SQLException;
-    public abstract E read(String eventName) throws SQLException;
+    public abstract E read(int id) throws SQLException;
     public abstract void update(int id, String eventName, String prizePool) throws SQLException;
     public abstract void delete(int id) throws SQLException;
+    public abstract List<E> list() throws SQLException;
 }

@@ -4,7 +4,7 @@ import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 
 import ClientService.java;
-import main.java.formato.middleton.ClientService;
+import formato.middleton.ClientService;
 
 @Command(name = "CLI", mixinStandardHelpOptions = true) 
 public class CLI implements Runnable

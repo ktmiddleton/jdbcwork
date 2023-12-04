@@ -1,4 +1,4 @@
-package main.java.formato.middleton;
+package formato.middleton;
 
 import formato.middleton.Event;
 import formato.middleton.EventDAO;
@@ -6,18 +6,15 @@ import formato.middleton.EventDAO;
 public class ClientService {
     public void create(String event_name, String prize_pool) throws Exception
     {
-        Event e = new Event();
-        e.setName(event_name);
-        e.setPrizePool(prize_pool);
 
         EventDAO dao = new EventDAO();
-        dao.create(e);
+        dao.create(event_name, prize_pool);
     }
 
-    public List<Event> read(String event_name) throws Exception
+    public Event read(int id) throws Exception
     {
         EventDAO dao = new EventDAO();
-        return dao.read(event_name);
+        return dao.read(id);
     }
 
     public void update(String event_name, String prize_pool, String id) throws Exception
