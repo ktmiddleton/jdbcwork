@@ -1,10 +1,7 @@
-import picocli.CommandLine;
+package formato.middleton;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
-
-import ClientService.java;
-import formato.middleton.ClientService;
 
 @Command(name = "CLI", mixinStandardHelpOptions = true) 
 public class CLI implements Runnable
@@ -35,24 +32,40 @@ public class CLI implements Runnable
     private int id;
 
     @Override
-    public void run() 
+    public void run()
     { 
         ClientService client = new ClientService();
-        if (create == True) 
+        if (create == true)
         {
-            client.create(name, prize_pool);
+            try {
+                client.create(name, prize_pool);
+            }catch(Exception e) {
+                System.out.println(e);
+            }
         }
-        else if (read == True) 
+        else if (read == true)
         {
-            client.read(name);
+            try {
+                client.read(id);
+            }catch(Exception e) {
+                System.out.println(e);
+            }
         }
-        else if (update == True) 
+        else if (update == true)
         {
-            client.update(name, prize_pool, id);
+            try {
+                client.update(id, name, prize_pool);
+            }catch(Exception e) {
+                System.out.println(e);
+            }
         }
-        else if (delete == True) 
+        else if (delete == true)
         {
-            client.delete(id);
+            try {
+                client.delete(id);
+            }catch(Exception e) {
+                System.out.println(e);
+            }
         }
     }
 }

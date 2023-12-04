@@ -17,13 +17,13 @@ public class ClientService {
         return dao.read(id);
     }
 
-    public void update(String event_name, String prize_pool, String id) throws Exception
+    public void update(int id, String event_name, String prize_pool) throws Exception
     {
         EventDAO dao = new EventDAO();
-        dao.update(event_name, prize_pool, id);
+        dao.update(id, event_name, prize_pool);
     }
 
-    public void delete(String id) throws Exception
+    public void delete(int id) throws Exception
     {
         EventDAO dao = new EventDAO();
         dao.delete(id);
