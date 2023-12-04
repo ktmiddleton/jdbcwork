@@ -8,7 +8,7 @@ public abstract class AbstractDAO<E extends AbstractEntity> {
     protected String Port = "3306";
     protected String Database = "project_db";
     protected String Username = "root";
-    protected String Password = "mypassword";
+    protected String Password = "pjhenrymabel403";
 
     public Connection getConnection() throws SQLException{
         String url = ConUrl+":"+Port+"/"+Database+"?user="+Username
