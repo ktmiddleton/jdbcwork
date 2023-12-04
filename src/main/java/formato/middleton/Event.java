@@ -3,7 +3,7 @@ package formato.middleton;
 public class Event extends AbstractEntity {
     private int id;
     private String name;
-    private int prizePool;
+    private String prizePool;
 
     public Event() {
     }
@@ -24,17 +24,17 @@ public class Event extends AbstractEntity {
         this.name = name;
     }
 
-    public Integer getPrizePool() {
+    public String getPrizePool() {
         return prizePool;
     }
 
-    public void setPrizePool(Integer prizePool) {
+    public void setPrizePool(String prizePool) {
         this.prizePool = prizePool;
     }
 
     @Override
     public String toString() {
-        return Integer.toString(id) + " | " + name + ": " + Integer.toString(prizePool);
+        return Integer.toString(id) + " | " + name + ": " + prizePool;
     }
 }
 
