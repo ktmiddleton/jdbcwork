@@ -3,6 +3,9 @@ import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 
+import ClientService.java;
+import main.java.formato.middleton.ClientService;
+
 @Command(name = "CLI", mixinStandardHelpOptions = true) 
 public class CLI implements Runnable
 {
@@ -21,17 +24,36 @@ public class CLI implements Runnable
 
     @Parameters(paramLabel = "<name>", 
                description = "The name of the event.")
-    private String[] name;
+    private String name;
 
     @Parameters(paramLabel = "<prize_pool_amount>", 
                description = "Amount of money in prize pool for the event")
-    private String[] prize_pool;
+    private String prize_pool;
+
+    @Parameters(paramLabel = "<id number for record>", 
+               description = "Used to differentiate records in the database.")
+    private int id;
 
     @Override
-    public void run() { 
-        // The business logic of the command goes here...
-        // In this case, code for generation of ASCII art graphics
-        // (omitted for the sake of brevity).
+    public void run() 
+    { 
+        ClientService client = new ClientService();
+        if (create == True) 
+        {
+            client.create(name, prize_pool);
+        }
+        else if (read == True) 
+        {
+            client.read(name);
+        }
+        else if (update == True) 
+        {
+            client.update(name, prize_pool, id);
+        }
+        else if (delete == True) 
+        {
+            client.delete(id);
+        }
     }
 }
 
